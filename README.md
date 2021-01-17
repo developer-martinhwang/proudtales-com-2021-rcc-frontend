@@ -26,6 +26,41 @@ create new rpository secret and attched token from `firebase login: ci`
 `git remote add origin url`
 `git push -u origin main`
 
+## convert UTC time to Local time !
+get browser timezone javascript
+`const clientTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone`
+covert UTC time from Cloud Firestore to local time
+`const localDateTime = new Date(books[i].createdAt).toLocaleString("en-US", {timeZone: clientTimezone})`
+
+## Firebase
+### run firebase emulator
+`firebase init emulators` and then project setup
+=== Emulators Setup
+? Which Firebase emulators do you want to set up? Press Space to select emulators, then Enter to confirm your choices. (Press <space> to select, <a> t
+o toggle all, <i> to invert selection)Hosting Emulator
+? Which port do you want to use for the hosting emulator? 5000
+? Would you like to enable the Emulator UI? Yes
+? Which port do you want to use for the Emulator UI (leave empty to use any available port)? 
+? Would you like to download the emulators now? Yes
+
+### run functions locally
+`firebase emulators:start`
+If you want to start a particular emulator, use the --only flag:
+for example `firebase emulators:start --only hosting`
+Do not forget `yarn build` to update firebase hosting local server 
+
+## ESLint
+https://eslint.org/docs/user-guide/getting-started
+### Installation
+`npm install eslint --save-dev` or `yarn add eslint --dev`
+`npx eslint --init` or `yarn run eslint --init`
+
+### Run ESLint
+`npx eslint yourfile.js` or `yarn run eslint yourfile.js`
+
+### Configuration
+After running `eslint --init`, you'll have a `.eslintrc.{js,yml,json}` file in your directory. 
+In it, you'll see some rules configured like this:
 
 ## Available Scripts
 

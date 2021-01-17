@@ -1,5 +1,6 @@
 {
   "name": "rcc-frontend",
+  "description": "react component class project for frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0"
   }
 }
