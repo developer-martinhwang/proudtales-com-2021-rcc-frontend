@@ -7,26 +7,103 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Jan 28, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated footer
  */
 import React from "react";
 // material-ui core
-import {Box, Typography} from "@material-ui/core";
+import {Box, Typography, List, ListItem, Link} from "@material-ui/core";
 // material-ui styles
 import {makeStyles} from "@material-ui/styles";
+// material-ui icons
+import {Email, 
+        Facebook, 
+        Instagram, 
+        Twitter, 
+        LinkedIn,
+        AccountBox} from "@material-ui/icons";
 const styles = makeStyles({
   root: {
-    background: "yellow",
-    width: "100%",
-    position: "fixed",
-    left: "0",
-    bottom: "0"
+    background: "#0d0827",
+    marginTop: "4em",
+    padding: "2em",
+    paddingTop: "4em",
+    borderTop: "10px solid white"
+  },
+  row: {
+    display: "flex",
+    flexWrap: "wrap",
+    marginRight: "-15px",
+    marginLeft: "-15px",
+    justifyContent: "center",
+  },
+  col: {
+    fontSize: "1.2rem",
+    position: "relative",
+    width: "28%",
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    '@media screen and (max-width: 960px)': {
+      width: "100%",
+      marginBottom: "20px"
+    }
+  },
+  listItem: {
+    paddingLeft: "0",
+  },
+  link: {
+    marginLeft: "0.2vw",
+    color: "#304ffe" 
+  },
+  copyright: {
+    fontSize:"0.95rem",
+    "& span":{
+      color: "#304ffe"
+    }
   }
 });
 function Footer() {
   const classes = styles();
   return (
     <Box className={classes.root}>
-      <Typography variant="h3">It is Footer</Typography>
+      <Box className={classes.row}>
+        <Box className={classes.col}>
+          <Typography variant="h5">Follow proudtale</Typography>
+          <List>
+            <ListItem className={classes.listItem}>
+               <LinkedIn /> <Link className={classes.link} href="#">LinkedIn</Link>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <Facebook /> <Link className={classes.link} href="#">Facebook</Link>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <Instagram /> <Link className={classes.link} href="#">Instagram</Link>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <Twitter /> <Link className={classes.link} href="#">Twitter</Link>
+            </ListItem>
+          </List>
+        </Box>
+        <Box className={classes.col}>
+          <Typography variant="h5">Proudtale</Typography>
+          <List>
+            <ListItem className={classes.listItem}>
+               <AccountBox /> <Link className={classes.link} href="#">Sign in</Link>
+            </ListItem>
+          </List>
+        </Box>
+        <Box className={classes.col}>
+          <Typography variant="h5">Contact proudtale</Typography>
+          <List>
+            <ListItem className={classes.listItem}>
+               <Email /> <Link className={classes.link} href="mailto:operations@proudtale.com">operations@proudtale.com</Link>
+            </ListItem>
+          </List>
+        </Box>
+      </Box>
+      <Box className={classes.row} paddingTop="20px">
+        <Typography className={classes.copyright} variant="body1">Copyright &copy; 2021, All Right Reserved <Box component="span">Proudtale</Box></Typography>
+      </Box>
     </Box>
   )
 }

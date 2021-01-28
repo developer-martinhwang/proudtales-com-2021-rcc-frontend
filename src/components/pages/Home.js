@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   root: {
     margin: "0",
     padding: "0",
-    height: "150vh",
     width: "auto"
   },
 })
@@ -31,7 +30,7 @@ function Home() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Navbar scroll={true}/>
+      <Navbar scroll={true} position="fixed"/>
       <Header /> 
       <Typography variant="h2">It is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is Home
       

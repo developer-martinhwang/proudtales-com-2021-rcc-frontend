@@ -7,6 +7,8 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles
  */
 import React, {useState, useEffect} from "react";
 // material-ui core 
@@ -21,21 +23,10 @@ const useStyles = makeStyles({
   accountBoxIcon: {
     fontSize: "2em"
   },
-  yellow: {
-    zIndex: "1",
-    position: "absolute",
-    width: "100%",
-    display: "flex",
-  },
-  red: {
-    background:"red",
-    position:"fixed",
-    top: "0",
-    width: "100%",
-    zIndex: "1",
-    display: "flex",
+  navIndigo: {
+    background:"#0d0827",
     transitionTimingFunction: "ease-in",
-    transition: "a;; 0.5s",
+    transition: "all 0.5s",
   }
 })
 function Navbar(prop) {
@@ -55,7 +46,7 @@ function Navbar(prop) {
   }, []);
   return (
     <Box className={classes.root}>
-      <Box className={ prop.scroll && show ? classes.red : classes.yellow} display="flex" justifyContent="space-between">
+      <Box className={ prop.scroll && show && classes.navIndigo} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
         <Box margin="10px">
           Icons
         </Box>

@@ -12,7 +12,7 @@
  */
 import React from "react";
 // material-ui core 
-import {Box, Typography} from "@material-ui/core";
+import {Box} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   root: {
     margin: "0",
     padding: "0",
-    height: "200vh",
     width: "auto"
   }
 })
@@ -31,10 +30,10 @@ function Greet() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Navbar scroll={false} />
+      <Navbar scroll={false} position="absolute"/>
       <Header />
        {console.log("browser timezone:",new Intl.DateTimeFormat().resolvedOptions().timeZone)}
-      <Typography variant="h3">It is Greet</Typography>
+      <Box height="20vh">It is Greet</Box>
       <Footer />
     </Box>
   )
