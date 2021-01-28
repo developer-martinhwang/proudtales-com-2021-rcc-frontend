@@ -14,11 +14,18 @@ import {Box, Typography} from "@material-ui/core";
 // material-ui styles
 import {makeStyles} from "@material-ui/styles";
 const styles = makeStyles({
+  root: {
+    background: "yellow",
+    width: "100%",
+    position: "fixed",
+    left: "0",
+    bottom: "0"
+  }
 });
 function Footer() {
   const classes = styles();
   return (
-    <Box className={classes.footer}>
+    <Box className={classes.root}>
       <Typography variant="h3">It is Footer</Typography>
     </Box>
   )

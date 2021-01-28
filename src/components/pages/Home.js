@@ -7,15 +7,36 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Jan 27, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles, added Navbar, Header, Footer
  */
-import React from 'react'
+import React from "react";
 // material-ui core 
-import {Box, Typography} from '@material-ui/core';
-
+import {Box, Typography} from "@material-ui/core";
+// material-ui style
+import {makeStyles} from "@material-ui/styles";
+// components
+import Header from "../views/Header";
+import Navbar from "../views/Navbar";
+import Footer from "../views/Footer";
+const useStyles = makeStyles({
+  root: {
+    margin: "0",
+    padding: "0",
+    height: "150vh",
+    width: "auto"
+  },
+})
 function Home() {
+  const classes = useStyles();
   return (
-    <Box className="app">
-      <Typography variant="h2">It is Home</Typography>
+    <Box className={classes.root}>
+      <Navbar scroll={true}/>
+      <Header /> 
+      <Typography variant="h2">It is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is HomeIt is Home
+      
+      </Typography>
+      <Footer />
     </Box>
   )
 }

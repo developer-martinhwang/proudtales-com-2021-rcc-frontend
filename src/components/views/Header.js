@@ -7,15 +7,35 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Jan 27, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated header Image
  */
-import React from 'react';
+import React from "react";
 // material-ui core 
-import {Box, Typography} from '@material-ui/core';
-
+import {Box} from "@material-ui/core";
+// material-ui style
+import {makeStyles} from "@material-ui/styles";
+// images
+import headerImage from "../../assets/images/header-image-1st.jpg"
+const useStyles = makeStyles({
+  root: {
+    margin: "0",
+    padding: "0",
+    objectFit: "contain",
+  },
+  headerImage1: {
+    backgroundSize:"cover",
+    backgroundImage: `url(${headerImage})`,
+    backgroundPosition: "center",
+    height: "55vh"
+  }
+})
 function Header() {
+  const classes = useStyles();
   return (
-    <Box>
-      <Typography variant="h3">It is Header</Typography>
+    <Box className={classes.root}>
+      <Box className={classes.headerImage1}>
+      </Box>
     </Box>
   )
 }

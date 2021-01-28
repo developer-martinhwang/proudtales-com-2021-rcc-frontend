@@ -7,6 +7,8 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Jan 26, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated Router 
  */
 import "./App.css";
 import React from "react";
@@ -20,7 +22,7 @@ import Home from "../src/components/pages/Home"
 function App() {
   return (
     <Router>
-      <Box>
+      <Box className="app">
         <Switch>
           <Route exact path="/" component={Greet}/>
           <Route exact path="/home" component={Home}/>
