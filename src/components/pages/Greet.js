@@ -9,6 +9,8 @@
  *   : created
  * - Jan 27, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles, added Navbar, Header, Footer
+ * - Jan 29, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : added Storycard
  */
 import React from "react";
 // material-ui core 
@@ -19,6 +21,11 @@ import {makeStyles} from "@material-ui/styles";
 import Navbar from "../views/Navbar";
 import Header from "../views/Header";
 import Footer from "../views/Footer";
+import Storycard from "../views/Storycard";
+// images
+import contentimage from "../../assets/images/content-image.png";
+import webtoonimage from "../../assets/images/webtoon-image.png";
+import collaboration from "../../assets/images/collaboration-image.png";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -33,7 +40,24 @@ function Greet() {
       <Navbar scroll={false} position="absolute"/>
       <Header />
        {console.log("browser timezone:",new Intl.DateTimeFormat().resolvedOptions().timeZone)}
-      <Box height="20vh">It is Greet</Box>
+      <Storycard 
+        title="Create various your books"
+        subtitle="Write your fiction, nonfiction, drama, potry and more."
+        image={contentimage}
+        flexDirection="row-reverse"
+      />
+       <Storycard 
+        title="Read excting web cartoon"
+        subtitle="Enjoy a type of digital comic books."
+        image={webtoonimage}
+        flexDirection="row"
+      />
+      <Storycard 
+        title="Collaborate books and cartoon"
+        subtitle="Create books and cartoon with collaboration"
+        image={collaboration}
+        flexDirection="row-reverse"
+      />
       <Footer />
     </Box>
   )
