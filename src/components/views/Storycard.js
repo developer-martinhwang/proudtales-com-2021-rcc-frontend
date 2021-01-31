@@ -9,6 +9,8 @@
  *   : created
  * - Jan 29, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles for responsive
+ * - Jan 30, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : removed flexDirection prop and added function for flexDirection
  */
 import React from "react";
 // material-ui core 
@@ -70,14 +72,22 @@ const useStyles = makeStyles({
         }
     }
 })
+// function:
+// if index # even flexDirection row-reverse
+// # odd flexDirection row 
+const flexDirection = (index) => {
+    if (index%2 === 0) {
+        return "row-reverse"
+    }else {
+        return "row"
+    }
+}
 function Storycard(prop) {
     const classes = useStyles();
     return (
         <Box className={classes.root}>
-            <Box className={classes.row} flexDirection={prop.flexDirection}>
-                <Box className={classes.col}
-                     
-                >
+            <Box className={classes.row} flexDirection={flexDirection(prop.index)}>
+                <Box className={classes.col}>
                     <Box className={classes.image} style={{backgroundImage:`url(${prop.image})`}}></Box>
                 </Box>
                 <Box className={classes.col}>

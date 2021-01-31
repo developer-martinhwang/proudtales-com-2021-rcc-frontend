@@ -46,7 +46,7 @@ function Navbar(prop) {
   }, []);
   return (
     <Box className={classes.root}>
-      <Box className={ prop.scroll && show && classes.navIndigo} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
+      <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
         <Box margin="10px">
           Icons
         </Box>

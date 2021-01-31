@@ -11,6 +11,9 @@
  *   : updated styles, added Navbar, Header, Footer
  * - Jan 29, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : added Storycard
+ * - Jan 30, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : removed previous 3 <Storycard /> created dummydata for <Storycard/>
+ *     implemented storyCardDemmy.map((story, index) => {})
  */
 import React from "react";
 // material-ui core 
@@ -33,6 +36,19 @@ const useStyles = makeStyles({
     width: "auto"
   }
 })
+const storyCardDummy = [
+  {title: "Create various your books", 
+   subtitle: "Write your fiction, nonfiction, drama, potry and more.",
+   image: `${contentimage}`,
+  },
+  {title: "Read excting web cartoon", 
+  subtitle: "Enjoy a type of digital comic books.",
+  image: `${webtoonimage}`
+  },
+  {title: "Collaborate books and cartoon", 
+  subtitle: "Create books and cartoon with collaboration",
+  image: `${collaboration}`
+  }]
 function Greet() {
   const classes = useStyles();
   return (
@@ -40,24 +56,13 @@ function Greet() {
       <Navbar scroll={false} position="absolute"/>
       <Header />
        {console.log("browser timezone:",new Intl.DateTimeFormat().resolvedOptions().timeZone)}
-      <Storycard 
-        title="Create various your books"
-        subtitle="Write your fiction, nonfiction, drama, potry and more."
-        image={contentimage}
-        flexDirection="row-reverse"
-      />
-       <Storycard 
-        title="Read excting web cartoon"
-        subtitle="Enjoy a type of digital comic books."
-        image={webtoonimage}
-        flexDirection="row"
-      />
-      <Storycard 
-        title="Collaborate books and cartoon"
-        subtitle="Create books and cartoon with collaboration"
-        image={collaboration}
-        flexDirection="row-reverse"
-      />
+       {storyCardDummy.map((story, index) => (
+         <Storycard key={index}
+                    index={index}
+                    title={story.title} 
+                    subtitle={story.subtitle}
+                    image={story.image}/>
+        ))}
       <Footer />
     </Box>
   )
