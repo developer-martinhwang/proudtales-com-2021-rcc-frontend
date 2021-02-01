@@ -25,6 +25,7 @@ import Navbar from "../views/Navbar";
 import Header from "../views/Header";
 import Footer from "../views/Footer";
 import Storycard from "../views/Storycard";
+import Accordioncard from "../views/Accordioncard";
 // images
 import contentimage from "../../assets/images/content-image.png";
 import webtoonimage from "../../assets/images/webtoon-image.png";
@@ -48,7 +49,17 @@ const storyCardDummy = [
   {title: "Collaborate books and cartoon", 
   subtitle: "Create books and cartoon with collaboration",
   image: `${collaboration}`
-  }]
+}]
+const accordionDummy = [
+  {summary: "What is proudtale?", 
+   details: "Proudtale is write and read any books, webtoon and so on",
+  },
+  {summary: "How much does produtale cost?", 
+   details: "Enjoy various genre on your mobile, tablet, laptop without any fee.",
+  },
+  {summary: "Collaborate books and cartoon", 
+   details: "Create books and cartoon with collaboration",
+}]
 function Greet() {
   const classes = useStyles();
   return (
@@ -63,6 +74,7 @@ function Greet() {
                     subtitle={story.subtitle}
                     image={story.image}/>
         ))}
+      <Accordioncard items={accordionDummy}/>
       <Footer />
     </Box>
   )
