@@ -57,8 +57,8 @@ const accordionDummy = [
   {summary: "How much does produtale cost?", 
    details: "Enjoy various genre on your mobile, tablet, laptop without any fee.",
   },
-  {summary: "Collaborate books and cartoon", 
-   details: "Create books and cartoon with collaboration",
+  {summary: "What can I read on proudtale?", 
+   details: "Read as much as you want, anytime you want",
 }]
 function Greet() {
   const classes = useStyles();

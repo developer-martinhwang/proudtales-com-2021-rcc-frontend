@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     root: {
         marginTop: "1em",
         padding: "4em 3em 0 3em",
-        borderTop: "10px solid white",
+        borderTop: "10px solid #303436",
         '@media screen and (max-width: 960px)': {
             padding: "4em 0 0 0",
         }

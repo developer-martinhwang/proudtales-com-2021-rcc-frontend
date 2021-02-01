@@ -28,7 +28,7 @@ const styles = makeStyles({
     marginTop: "4em",
     padding: "2em",
     paddingTop: "4em",
-    borderTop: "10px solid white"
+    borderTop: "10px solid #303436"
   },
   row: {
     display: "flex",
