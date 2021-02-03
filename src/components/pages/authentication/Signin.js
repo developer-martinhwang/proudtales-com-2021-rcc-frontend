@@ -34,6 +34,7 @@ const useStyles = makeStyles({
   fade: {
     backgroundColor: "rgba(37, 37, 37, 0.61)",
     minHeight: "100vh",
+    minWidth:"100vw",
   },
   footer: {
     marginTop: "none",
