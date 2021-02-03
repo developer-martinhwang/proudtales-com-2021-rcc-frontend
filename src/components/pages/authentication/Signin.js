@@ -29,6 +29,7 @@ const useStyles = makeStyles({
     backgroundPosition: "center",
     objectFit: "contain",
     width:"100%",
+    minWidth:"100vw",
   },
   fade: {
     backgroundColor: "rgba(37, 37, 37, 0.61)",
