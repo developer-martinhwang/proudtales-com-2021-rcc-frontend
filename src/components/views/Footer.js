@@ -9,6 +9,9 @@
  *   : created
  * - Jan 28, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated footer
+ * - Feb 2, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : implemented codes to apply css styles in makeStyles()
+ *     using props from parent component
  */
 import React from "react";
 // material-ui core
@@ -22,13 +25,13 @@ import {Email,
         Twitter, 
         LinkedIn,
         AccountBox} from "@material-ui/icons";
-const styles = makeStyles({
+const useStyles = makeStyles({
   root: {
-    background: "#0d0827",
-    marginTop: "4em",
+    background: prop => prop.background,
+    marginTop: prop => prop.marginTop,
     padding: "2em",
     paddingTop: "4em",
-    borderTop: "10px solid #303436"
+    borderTop: prop => prop.borderTop
   },
   row: {
     display: "flex",
@@ -62,8 +65,8 @@ const styles = makeStyles({
     }
   }
 });
-function Footer() {
-  const classes = styles();
+function Footer(prop) {
+  const classes = useStyles(prop);
   return (
     <Box className={classes.root}>
       <Box className={classes.row}>

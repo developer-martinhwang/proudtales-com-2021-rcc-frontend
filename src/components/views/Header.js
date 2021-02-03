@@ -39,8 +39,7 @@ function Header() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Box className={classes.headerImage1}>
-      </Box>
+      <Box className={classes.headerImage1}/>
       <Box className={classes.headerFadeBottom}/>
     </Box>
   )

@@ -14,6 +14,8 @@
  * - Jan 30, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : removed previous 3 <Storycard /> created dummydata for <Storycard/>
  *     implemented storyCardDemmy.map((story, index) => {})
+ * - Feb 2, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : added props to <Footer />
  */
 import React from "react";
 // material-ui core 
@@ -75,7 +77,9 @@ function Greet() {
                     image={story.image}/>
         ))}
       <Accordioncard items={accordionDummy}/>
-      <Footer />
+      <Footer borderTop="10px solid #303436" 
+              marginTop="4em" 
+              background="#0d0827"/>
     </Box>
   )
 }

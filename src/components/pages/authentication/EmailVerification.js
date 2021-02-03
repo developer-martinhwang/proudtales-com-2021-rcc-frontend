@@ -11,7 +11,7 @@
 import React from 'react'
 // material-ui core 
 import {Box} from '@material-ui/core';
-function Verification() {
+function EmailVerification() {
     return (
         <Box>
             
@@ -19,4 +19,4 @@ function Verification() {
     )
 }
 
-export default Verification
+export default EmailVerification
