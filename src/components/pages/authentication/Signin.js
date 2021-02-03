@@ -7,6 +7,9 @@
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Feb 3, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles
+ *     - changed minHight: "100vh" in fade 
  */
 import React from 'react'
 // material-ui core 
@@ -25,13 +28,11 @@ const useStyles = makeStyles({
     backgroundImage: `url(${headerImage})`,
     backgroundPosition: "center",
     objectFit: "contain",
-    minHeight: "100vh",
     width:"100%",
-    height:"100%",
   },
   fade: {
     backgroundColor: "rgba(37, 37, 37, 0.61)",
-    height: "100vh",
+    minHeight: "100vh",
   },
   footer: {
     marginTop: "none",
