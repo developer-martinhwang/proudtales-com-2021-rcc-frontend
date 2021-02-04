@@ -39,12 +39,13 @@ const useStyles = makeStyles({
     backgroundSize:"cover",
     backgroundImage: `url(${headerImage})`,
     backgroundPosition: "center",
-    objectFit: "contain",
-    width:"auto",
+    // objectFit: "contain",
+    width:"100%",
     color: "white"
   },
   fade: {
     backgroundColor: "rgba(37, 37, 37, 0.61)",
+    width: "100%",
     minHeight: "100vh",
   },
   container: {
