@@ -105,7 +105,7 @@ function Footer(prop) {
         </Box>
       </Box>
       <Box className={classes.row} paddingTop="20px">
-        <Typography className={classes.copyright} variant="body1">Copyright &copy; 2021, All Right Reserved <Box component="span">Proudtale</Box></Typography>
+        <Typography className={classes.copyright} variant="body1">Copyright &copy; {new Date().getFullYear()}, All Right Reserved <Link component="span">Proudtale</Link></Typography>
       </Box>
     </Box>
   )

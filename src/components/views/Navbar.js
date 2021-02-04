@@ -12,13 +12,20 @@
  */
 import React, {useState, useEffect} from "react";
 // material-ui core 
-import {Box} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles'
+import {Box} from "@material-ui/core";
+import {makeStyles} from "@material-ui/styles";
 // material-ui icons
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+// images
+import proudtaleGold from "../../assets/icons/proudtale_gold.png"
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
+  },
+  logo: {
+    padding: "2px",
+    width: "8vw",
+    height: "8vh"
   },
   accountBoxIcon: {
     fontSize: "2em"
@@ -47,10 +54,10 @@ function Navbar(prop) {
   return (
     <Box className={classes.root}>
       <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
-        <Box margin="10px">
-          Icons
+        <Box margin="5px">
+          <img className={classes.logo} alt="proudtale logo" src={proudtaleGold}/>
         </Box>
-        <Box margin="10px">
+        <Box margin="10px" paddingTop="8px">
           <AccountBoxIcon className={classes.accountBoxIcon}/>
         </Box>
       </Box>
