@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     backgroundImage: `url(${headerImage})`,
     backgroundPosition: "center",
     objectFit: "contain",
-    width:"100%",
+    width:"auto",
     color: "white"
   },
   fade: {

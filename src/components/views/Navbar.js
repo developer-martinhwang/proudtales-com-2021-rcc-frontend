@@ -17,7 +17,6 @@ import {makeStyles} from "@material-ui/styles";
 // material-ui icons
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 // images
-import proudtaleGold from "../../assets/icons/proudtale_gold.png"
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
@@ -54,8 +53,8 @@ function Navbar(prop) {
   return (
     <Box className={classes.root}>
       <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
-        <Box margin="5px">
-          <img className={classes.logo} alt="proudtale logo" src={proudtaleGold}/>
+        <Box margin="5px" color="yellow" padding="7px">
+          PROUDTALE
         </Box>
         <Box margin="10px" paddingTop="8px">
           <AccountBoxIcon className={classes.accountBoxIcon}/>
