@@ -12,8 +12,11 @@
  * - Feb 2, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : implemented codes to apply css styles in makeStyles()
  *     using props from parent component
+ * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : added <Link to="\">
  */
 import React from "react";
+import {Link as ReactLink} from "react-router-dom";
 // material-ui core
 import {Box, Typography, List, ListItem, Link} from "@material-ui/core";
 // material-ui styles
@@ -24,7 +27,8 @@ import {Email,
         Instagram, 
         Twitter, 
         LinkedIn,
-        AccountBox} from "@material-ui/icons";
+        AccountBox,
+        Home} from "@material-ui/icons";
 const useStyles = makeStyles({
   root: {
     background: prop => prop.background,
@@ -56,7 +60,9 @@ const useStyles = makeStyles({
   },
   link: {
     marginLeft: "0.2vw",
-    color: "#304ffe" 
+    padding: "0.3vh 0 0 0.2vw",
+    color: "#304ffe",
+    textDecoration: 'none' 
   },
   copyright: {
     fontSize:"0.95rem",
@@ -91,7 +97,10 @@ function Footer(prop) {
           <Typography variant="h5">Proudtale</Typography>
           <List>
             <ListItem className={classes.listItem}>
-               <AccountBox /> <Link className={classes.link} href="#">Sign in</Link>
+               <Home /> <ReactLink className={classes.link} to="/">Home</ReactLink>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <AccountBox /> <ReactLink className={classes.link} to="/authentication/signin">Sign in</ReactLink>
             </ListItem>
           </List>
         </Box>

@@ -11,6 +11,7 @@
  *   : updated styles
  */
 import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 // material-ui core 
 import {Box} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
@@ -27,7 +28,11 @@ const useStyles = makeStyles({
     height: "8vh"
   },
   accountBoxIcon: {
-    fontSize: "2em"
+    fontSize: "2em",
+    color:"#303436",
+    '&:hover': {
+      color: "#fff"
+    }
   },
   navIndigo: {
     background:"#0d0827",
@@ -46,9 +51,6 @@ function Navbar(prop) {
         setShow(false);
       }
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
   }, []);
   return (
     <Box className={classes.root}>
@@ -57,7 +59,9 @@ function Navbar(prop) {
           PROUDTALE
         </Box>
         <Box margin="10px" paddingTop="8px">
-          <AccountBoxIcon className={classes.accountBoxIcon}/>
+          <Link to="/authentication/signin">
+            <AccountBoxIcon className={classes.accountBoxIcon}/>
+          </Link>
         </Box>
       </Box>
     </Box>

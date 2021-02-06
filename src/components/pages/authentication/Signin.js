@@ -10,11 +10,14 @@
  * - Feb 3, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles
  *     - created <form> <MyTextField>
+ * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *     - updated styles
+ *     - added <Link to="\">
  */
 import React from 'react'
 // material-ui core 
 import {Box,
-        Typography, 
+        Typography,
         Container,
         Button,
         Checkbox,
@@ -59,7 +62,13 @@ const useStyles = makeStyles({
     }
   },
   head: {
-    color: "#fff"
+    color: "#fff",
+    textAlign: "center"
+  },
+  icon: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "1vw"
   },
   main: {
     color: "#fff"
@@ -96,56 +105,60 @@ function Signin() {
           <CssBaseline />
           <Paper className={classes.paper}>
             <Box className={classes.head}>
-              <Avatar>
+              <Box className={classes.icon}>
+                <Avatar>
 
-              </Avatar>
+                </Avatar>
+              </Box>
               <Typography variant="h5">
                 Sign in
               </Typography>
             </Box>
-            <form className={classes.head}>
-              <MyTextField 
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus/>
-              <MyTextField 
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"/>
-              <FormControlLabel 
-                control={<Checkbox value="remember"/>}
-                label="Remember me"/>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained">
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+            <Box>
+              <form className={classes.form}>
+                <MyTextField 
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus/>
+                <MyTextField 
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"/>
+                <FormControlLabel 
+                  control={<Checkbox value="remember"/>}
+                  label="Remember me"/>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained">
+                  Sign In
+                </Button>
+                <Grid container>
+                  <Grid>
+                    <Link href="#" variant="body2">
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link>
+                      {"New to Proudtale? Sign up Now"}
+                    </Link>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <Link>
-                    {"New to Proudtale? Sign up Now"}
-                  </Link>
-                </Grid>
-              </Grid>
-            </form>
+              </form>
+            </Box>
           </Paper>
         </Container>
         <Box>
