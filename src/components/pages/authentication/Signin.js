@@ -11,8 +11,9 @@
  *   : updated styles
  *     - created <form> <MyTextField>
  * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *     - updated styles
- *     - added <Link to="\">
+ *   : updated styles added <Link to="\">
+ * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles
  */
 import React from 'react'
 // material-ui core 
@@ -35,6 +36,8 @@ import {makeStyles, withStyles} from "@material-ui/styles";
 import Footer from "../../views/Footer";
 // images
 import headerImage from "../../../assets/images/header-image-1st.jpg";
+// icons
+import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -42,7 +45,6 @@ const useStyles = makeStyles({
     backgroundSize:"cover",
     backgroundImage: `url(${headerImage})`,
     backgroundPosition: "center",
-    // objectFit: "contain",
     width:"100%",
     color: "white"
   },
@@ -56,19 +58,24 @@ const useStyles = makeStyles({
   },
   paper: {
     backgroundColor:"#0d082766",
-    padding: "10vh 2vw 25vh 2vw",
+    padding: "7vh 2vw 10vh 2vw",
     '@media screen and (max-width: 960px)': {
-      padding: "10vh 4vw 25vh 4vw",
+      padding: "7vh 4vw 10vh 4vw",
     }
   },
   head: {
     color: "#fff",
-    textAlign: "center"
   },
   icon: {
     display: "flex",
     justifyContent: "center",
-    marginBottom: "1vw"
+    marginBottom: "3vh",
+    "& img": {
+    }
+  },
+  signintext: {
+    fontSize:"2em",
+    fontWeight: "bolder"
   },
   main: {
     color: "#fff"
@@ -76,9 +83,38 @@ const useStyles = makeStyles({
   textFiled: {
     backgroundColor: "#fff",
   },
+  formcontrollabel: {
+    color: "#fff",
+    '& svg': {
+      color: "#fff"
+    },
+    '& span': {
+      paddingTop: "5px"
+    }
+  },
+  signinbutton: {
+    marginTop: "3vh",
+    height: "5.5vh"
+  },
   footer: {
     marginTop: "none",
-  }
+  },
+  avatar: {
+    width: "55px",
+    height: "55px"
+  },
+  forgotpassword: {
+    marginTop: "3vh",
+    '& a': {
+      color:"#868788"
+    }
+  },
+  signupnow: {
+    margin: "1vh 0",
+    '& a': {
+      color:"#868788"
+    }
+  },
 })
 const MyTextField = withStyles({
   root: {
@@ -91,7 +127,6 @@ const MyTextField = withStyles({
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: '#304ffe',
-       
       },
     }
   }
@@ -106,11 +141,9 @@ function Signin() {
           <Paper className={classes.paper}>
             <Box className={classes.head}>
               <Box className={classes.icon}>
-                <Avatar>
-
-                </Avatar>
+                <Avatar src={proudtaleLogo} className={classes.avatar}/>
               </Box>
-              <Typography variant="h5">
+              <Typography variant="body1" className={classes.signintext}>
                 Sign in
               </Typography>
             </Box>
@@ -136,27 +169,31 @@ function Signin() {
                   type="password"
                   id="password"
                   autoComplete="current-password"/>
-                <FormControlLabel 
-                  control={<Checkbox value="remember"/>}
-                  label="Remember me"/>
                 <Button
                   type="submit"
                   fullWidth
-                  variant="contained">
+                  variant="contained"
+                  className={classes.signinbutton}>
                   Sign In
                 </Button>
-                <Grid container>
-                  <Grid>
+                <FormControlLabel 
+                  control={<Checkbox value="remember"
+                                     color="default"
+                                     />}
+                  label="Remember me"
+                  className={classes.formcontrollabel}/>
+                <Box>
+                  <Grid className={classes.forgotpassword}>
                     <Link href="#" variant="body2">
                       Forgot password?
                     </Link>
                   </Grid>
-                  <Grid item>
+                  <Grid item className={classes.signupnow}>
                     <Link>
                       {"New to Proudtale? Sign up Now"}
                     </Link>
                   </Grid>
-                </Grid>
+                </Box>
               </form>
             </Box>
           </Paper>

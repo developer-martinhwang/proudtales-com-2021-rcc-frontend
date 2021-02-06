@@ -28,7 +28,9 @@ import {Email,
         Twitter, 
         LinkedIn,
         AccountBox,
-        Home} from "@material-ui/icons";
+        Home,
+        QuestionAnswer,
+        Description} from "@material-ui/icons";
 const useStyles = makeStyles({
   root: {
     background: prop => prop.background,
@@ -101,6 +103,12 @@ function Footer(prop) {
             </ListItem>
             <ListItem className={classes.listItem}>
                <AccountBox /> <ReactLink className={classes.link} to="/authentication/signin">Sign in</ReactLink>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <QuestionAnswer /> <ReactLink className={classes.link} to="#">FAQ</ReactLink>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+               <Description /> <ReactLink className={classes.link} to="#">Terms of Use</ReactLink>
             </ListItem>
           </List>
         </Box>
