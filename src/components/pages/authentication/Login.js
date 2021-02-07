@@ -13,7 +13,9 @@
  * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles added <Link to="\">
  * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : updated styles and added showPassword state 
+ *   : updated styles and added showPassword state
+ * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : completed showHidePassword()
  */
 import React, {useState, useEffect} from 'react'
 import {Link as ReactLink} from "react-router-dom";
@@ -29,7 +31,8 @@ import {Box,
         FormControlLabel,
         Grid, 
         Paper,
-        InputAdornment
+        InputAdornment,
+        IconButton
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles, withStyles} from "@material-ui/styles";
@@ -157,9 +160,12 @@ const MyTextField = withStyles({
 })(TextField)
 function Login() {
   const classes = useStyles();
-  const [showPassword, setShowPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+  const showHidePassword = () => {
+    setShowPassword(!showPassword);
+  }
   useEffect(() => {
-    setShowPassword(false)
+    setShowPassword()
   },[])
   const showHidePasswordIcon = (showPassword?<Visibility className={classes.logo}/>:
     <VisibilityOff className={classes.logo}/>)
@@ -213,7 +219,11 @@ function Login() {
                     ),
                     endAdornment:(
                       <InputAdornment position="end">
-                       {showHidePasswordIcon}
+                        <IconButton
+                          aria-label="toogle password visibility"
+                          onClick={showHidePassword}>
+                          {showHidePasswordIcon}
+                        </IconButton>
                       </InputAdornment>
                     )
                   }}

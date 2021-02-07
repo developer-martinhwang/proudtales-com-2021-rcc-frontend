@@ -59,7 +59,7 @@ function Navbar(prop) {
           PROUDTALE
         </Box>
         <Box margin="10px" paddingTop="8px">
-          <Link to="/authentication/signin">
+          <Link to="/authentication/login">
             <AccountBoxIcon className={classes.accountBoxIcon}/>
           </Link>
         </Box>

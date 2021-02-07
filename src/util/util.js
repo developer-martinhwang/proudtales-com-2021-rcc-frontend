@@ -8,6 +8,3 @@
  * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
  */
-export const showHidePassword = () => {
-    alert("show & hide password");
-};
