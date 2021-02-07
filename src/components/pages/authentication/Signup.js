@@ -28,7 +28,7 @@ import {makeStyles, withStyles} from "@material-ui/styles";
 import {Email, 
         VpnKey}from "@material-ui/icons";
 // components
-import Footer from "../../views/Footer";
+import Footer from "../../layouts/Footer";
 // images
 import headerImage from "../../../assets/images/header-image-1st.jpg";
 // icons

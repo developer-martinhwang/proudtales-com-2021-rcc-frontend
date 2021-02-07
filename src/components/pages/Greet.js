@@ -23,11 +23,11 @@ import {Box} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
-import Navbar from "../views/Navbar";
-import Header from "../views/Header";
-import Footer from "../views/Footer";
-import Storycard from "../views/Storycard";
-import Accordioncard from "../views/Accordioncard";
+import Navbar from "../layouts/Navbar";
+import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
+import Storycard from "../layouts/Storycard";
+import Accordioncard from "../layouts/Accordioncard";
 // images
 import contentimage from "../../assets/images/content-image.png";
 import webtoonimage from "../../assets/images/webtoon-image.png";

@@ -27,7 +27,6 @@ import {Box,
         Checkbox,
         CssBaseline, 
         Avatar,
-        TextField, 
         FormControlLabel,
         Grid, 
         Paper,
@@ -35,7 +34,7 @@ import {Box,
         IconButton
         } from '@material-ui/core';
 // material-ui style
-import {makeStyles, withStyles} from "@material-ui/styles";
+import {makeStyles} from "@material-ui/styles";
 // material-ui icons
 import {Email, 
         VpnKey,
@@ -43,7 +42,8 @@ import {Email,
         VisibilityOff
         }from "@material-ui/icons";
 // components
-import Footer from "../../views/Footer";
+import Footer from "../../layouts/Footer";
+import MyTextField from "../../mytags/MyTextField";
 // images
 import headerImage from "../../../assets/images/header-image-1st.jpg";
 // icons
@@ -136,28 +136,6 @@ const useStyles = makeStyles({
     }
   },
 })
-const MyTextField = withStyles({
-  root: {
-    '& label':{
-      color: "#304ffe",
-    },
-    '& label.Mui-focused': {
-      color: "#fff",
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: "#304ffe",
-      },
-      '&:hover fieldset': {
-        borderColor: "#4a64f8",
-      },
-      '& input': {
-        color: "#fff",
-        marginTop: "0.3vh"
-      }
-    },
-  }
-})(TextField)
 function Login() {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
@@ -185,11 +163,11 @@ function Login() {
             </Box>
             <Box>
               <form className={classes.form}>
-                <MyTextField 
+                <MyTextField
                   variant="outlined"
                   margin="normal"
-                  required
-                  fullWidth
+                  required={true}
+                  fullWidth={true}
                   id="email"
                   label="Email"
                   name="email"
@@ -201,12 +179,12 @@ function Login() {
                       </InputAdornment>
                     ),
                   }}
-                  autoFocus/>
+                  autoFocus={true}/>
                 <MyTextField 
                   variant="outlined"
                   margin="normal"
-                  required
-                  fullWidth
+                  required={true}
+                  fullWidth={true}
                   name="password"
                   label="Password"
                   type={showPassword?"text":"password"}

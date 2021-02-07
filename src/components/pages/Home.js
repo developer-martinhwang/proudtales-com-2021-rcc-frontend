@@ -16,9 +16,9 @@ import {Box, Typography} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
-import Header from "../views/Header";
-import Navbar from "../views/Navbar";
-import Footer from "../views/Footer";
+import Header from "../layouts/Header";
+import Navbar from "../layouts/Navbar";
+import Footer from "../layouts/Footer";
 const useStyles = makeStyles({
   root: {
     margin: "0",
