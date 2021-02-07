@@ -102,13 +102,13 @@ function Footer(prop) {
                <Home /> <ReactLink className={classes.link} to="/">Home</ReactLink>
             </ListItem>
             <ListItem className={classes.listItem}>
-               <AccountBox /> <ReactLink className={classes.link} to="/authentication/signin">Sign in</ReactLink>
+               <AccountBox /> <ReactLink className={classes.link} to="/authentication/login">Log in</ReactLink>
             </ListItem>
             <ListItem className={classes.listItem}>
                <QuestionAnswer /> <ReactLink className={classes.link} to="#">FAQ</ReactLink>
             </ListItem>
             <ListItem className={classes.listItem}>
-               <Description /> <ReactLink className={classes.link} to="#">Terms of Use</ReactLink>
+               <Description /> <ReactLink className={classes.link} to="#">Terms & Conditions</ReactLink>
             </ListItem>
           </List>
         </Box>

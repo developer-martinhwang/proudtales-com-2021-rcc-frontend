@@ -13,9 +13,10 @@
  * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles added <Link to="\">
  * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : updated styles
+ *   : updated styles and added showPassword state 
  */
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {Link as ReactLink} from "react-router-dom";
 // material-ui core 
 import {Box,
         Typography,
@@ -27,11 +28,17 @@ import {Box,
         TextField, 
         FormControlLabel,
         Grid, 
-        Link,
         Paper,
+        InputAdornment
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles, withStyles} from "@material-ui/styles";
+// material-ui icons
+import {Email, 
+        VpnKey,
+        Visibility,
+        VisibilityOff
+        }from "@material-ui/icons";
 // components
 import Footer from "../../views/Footer";
 // images
@@ -73,7 +80,7 @@ const useStyles = makeStyles({
     "& img": {
     }
   },
-  signintext: {
+  logintext: {
     fontSize:"2em",
     fontWeight: "bolder"
   },
@@ -92,9 +99,18 @@ const useStyles = makeStyles({
       paddingTop: "5px"
     }
   },
-  signinbutton: {
-    marginTop: "3vh",
-    height: "5.5vh"
+  logo: {
+    color: "#304ffe",
+  },
+  loginbutton: {
+    marginTop: "3.5vh",
+    backgroundColor: "#4a64f8",
+    minHeight: "5vh",
+    color: "#3619ff",
+    "&:hover": {
+      backgroundColor: "#304ffe",
+      color:"#fff"
+    }
   },
   footer: {
     marginTop: "none",
@@ -112,7 +128,8 @@ const useStyles = makeStyles({
   signupnow: {
     margin: "1vh 0",
     '& a': {
-      color:"#868788"
+      color:"#868788",
+      textDecoration: 'none' 
     }
   },
 })
@@ -122,17 +139,30 @@ const MyTextField = withStyles({
       color: "#304ffe",
     },
     '& label.Mui-focused': {
-      color: '#fff',
+      color: "#fff",
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: '#304ffe',
+        borderColor: "#304ffe",
       },
-    }
+      '&:hover fieldset': {
+        borderColor: "#4a64f8",
+      },
+      '& input': {
+        color: "#fff",
+        marginTop: "0.3vh"
+      }
+    },
   }
 })(TextField)
-function Signin() {
+function Login() {
   const classes = useStyles();
+  const [showPassword, setShowPassword] = useState();
+  useEffect(() => {
+    setShowPassword(false)
+  },[])
+  const showHidePasswordIcon = (showPassword?<Visibility className={classes.logo}/>:
+    <VisibilityOff className={classes.logo}/>)
   return (
     <Box className={classes.root}>
       <Box className={classes.fade}>
@@ -143,8 +173,8 @@ function Signin() {
               <Box className={classes.icon}>
                 <Avatar src={proudtaleLogo} className={classes.avatar}/>
               </Box>
-              <Typography variant="body1" className={classes.signintext}>
-                Sign in
+              <Typography variant="body1" className={classes.logintext}>
+                Log in
               </Typography>
             </Box>
             <Box>
@@ -155,9 +185,16 @@ function Signin() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Email className={classes.logo}/>
+                      </InputAdornment>
+                    ),
+                  }}
                   autoFocus/>
                 <MyTextField 
                   variant="outlined"
@@ -166,15 +203,27 @@ function Signin() {
                   fullWidth
                   name="password"
                   label="Password"
-                  type="password"
+                  type={showPassword?"text":"password"}
                   id="password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <VpnKey className={classes.logo}/>
+                      </InputAdornment>
+                    ),
+                    endAdornment:(
+                      <InputAdornment position="end">
+                       {showHidePasswordIcon}
+                      </InputAdornment>
+                    )
+                  }}
                   autoComplete="current-password"/>
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
-                  className={classes.signinbutton}>
-                  Sign In
+                  className={classes.loginbutton}>
+                  Log In
                 </Button>
                 <FormControlLabel 
                   control={<Checkbox value="remember"
@@ -184,14 +233,14 @@ function Signin() {
                   className={classes.formcontrollabel}/>
                 <Box>
                   <Grid className={classes.forgotpassword}>
-                    <Link href="#" variant="body2">
+                    <ReactLink to="#">
                       Forgot password?
-                    </Link>
+                    </ReactLink>
                   </Grid>
                   <Grid item className={classes.signupnow}>
-                    <Link>
-                      {"New to Proudtale? Sign up Now"}
-                    </Link>
+                    <ReactLink to="/authentication/signup" variant="body2">
+                      New to Proudtale? Sign up Now
+                    </ReactLink>
                   </Grid>
                 </Box>
               </form>
@@ -206,4 +255,4 @@ function Signin() {
   )
 }
 
-export default Signin
+export default Login
