@@ -18,16 +18,20 @@ import {makeStyles} from "@material-ui/styles";
 // material-ui icons
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 // images
-import proudtale from "../../assets/icons/proudtale.png";
+import proudtale from "../../assets/icons/proudtale-white.png";
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
   },
   logo: {
-    width: "7vw",
-    height: "6vh",
-    margin: "0.8vh 0 0 0.6vw",
-    padding: "0.7vh 0.6vw 0 0.6vw",
+    // width: "7vw",
+    // height: "6vh",
+    margin: "1.5vh 0 0 1vw",
+    padding: "1.5vh 0 0 1vw",
+    '@media screen and (max-width: 960px)': {
+      padding: "2vh 0 0 1vw",
+      margin: "2vh 0 0 1vw",
+    }
   },
   accountBoxIcon: {
     fontSize: "2em",
@@ -58,7 +62,7 @@ function Navbar(prop) {
     <Box className={classes.root}>
       <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
         <Box className={classes.logo}>
-          <img src={proudtale} width="100px"/>
+          <img src={proudtale} width="120px"/>
         </Box>
         <Box margin="15px" paddingTop="8px">
           <Link to="/authentication/login">
