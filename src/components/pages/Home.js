@@ -10,7 +10,7 @@
  * - Jan 27, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated styles, added Navbar, Header, Footer
  */
-import React, {useEffect} from "react";
+import React from "react";
 // material-ui core 
 import {Box, Typography} from "@material-ui/core";
 // material-ui style
