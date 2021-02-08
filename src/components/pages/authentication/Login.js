@@ -16,9 +16,11 @@
  *   : updated styles and added showPassword state
  * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : completed showHidePassword()
+ * - Feb 8, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated restoration: scroll to top
  */
-import React, {useState, useEffect} from 'react'
-import {Link as ReactLink} from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import {Link as ReactLink, useLocation} from "react-router-dom";
 // material-ui core 
 import {Box,
         Typography,
@@ -142,9 +144,12 @@ function Login() {
   const showHidePassword = () => {
     setShowPassword(!showPassword);
   }
+  // restoration: scroll to top
+  const {pathname} = useLocation();
   useEffect(() => {
+    window.scrollTo(0, 0);
     setShowPassword()
-  },[])
+  },[pathname])
   const showHidePasswordIcon = (showPassword?<Visibility className={classes.logo}/>:
     <VisibilityOff className={classes.logo}/>)
   return (

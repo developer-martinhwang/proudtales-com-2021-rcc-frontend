@@ -8,7 +8,7 @@
  * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created and duplicated Login code
  */
-import React from 'react'
+import React from 'react';
 import {Link as ReactLink} from "react-router-dom";
 // material-ui core 
 import {Box,

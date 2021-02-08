@@ -9,9 +9,11 @@
  *   : created and updated styles
  * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated logo
+ * - Feb 8, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated restoration: scroll to top
  */
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 // material-ui core 
 import {Box} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
@@ -26,11 +28,11 @@ const useStyles = makeStyles({
   logo: {
     // width: "7vw",
     // height: "6vh",
-    margin: "1.5vh 0 0 1vw",
-    padding: "1.5vh 0 0 1vw",
+    margin: "1vh 0 0 1vw",
+    padding: "1vh 0 0 1vw",
     '@media screen and (max-width: 960px)': {
-      padding: "2vh 0 0 1vw",
-      margin: "2vh 0 0 1vw",
+      padding: "1.5vh 0 0 1vw",
+      margin: "1.5vh 0 0 1vw",
     }
   },
   accountBoxIcon: {
@@ -49,7 +51,10 @@ const useStyles = makeStyles({
 function Navbar(prop) {
   const classes = useStyles();
   const [show, setShow] = useState(false);
+  // restoration: scroll to top
+  const {pathname} = useLocation();
   useEffect(() => {
+    window.scrollTo(0, 0);
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
         setShow(true);
@@ -57,7 +62,7 @@ function Navbar(prop) {
         setShow(false);
       }
     });
-  }, []);
+  }, [pathname]);
   return (
     <Box className={classes.root}>
       <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
