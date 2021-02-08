@@ -6,9 +6,9 @@
  * -
  * Revision History:
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : created
- * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : updated styles
+ *   : created and updated styles
+ * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated logo
  */
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
@@ -18,14 +18,16 @@ import {makeStyles} from "@material-ui/styles";
 // material-ui icons
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 // images
+import proudtale from "../../assets/icons/proudtale.png";
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
   },
   logo: {
-    padding: "2px",
-    width: "8vw",
-    height: "8vh"
+    width: "7vw",
+    height: "6vh",
+    margin: "0.8vh 0 0 0.6vw",
+    padding: "0.7vh 0.6vw 0 0.6vw",
   },
   accountBoxIcon: {
     fontSize: "2em",
@@ -55,10 +57,10 @@ function Navbar(prop) {
   return (
     <Box className={classes.root}>
       <Box className={ prop.scroll && show?classes.navIndigo:null} display="flex" justifyContent="space-between" zIndex="1" width="100%" top="0" position={prop.position}>
-        <Box margin="5px" color="yellow" padding="7px">
-          PROUDTALE
+        <Box className={classes.logo}>
+          <img src={proudtale} width="100px"/>
         </Box>
-        <Box margin="10px" paddingTop="8px">
+        <Box margin="15px" paddingTop="8px">
           <Link to="/authentication/login">
             <AccountBoxIcon className={classes.accountBoxIcon}/>
           </Link>
