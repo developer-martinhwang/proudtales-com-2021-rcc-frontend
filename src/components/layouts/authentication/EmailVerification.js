@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/forms/Verification.js
+ * Filename: rcc-frontend/src/components/layouts/authentication/EmailVerification.js
  * Key Options:
  * -
  * Revision History:
@@ -10,11 +10,12 @@
  */
 import React from 'react'
 // material-ui core 
-import {Box} from '@material-ui/core';
+import {Box,
+        Typography} from '@material-ui/core';
 function EmailVerification() {
     return (
         <Box>
-            
+            <Typography variant="h5"> Email Verificatioin</Typography>
         </Box>
     )
 }

@@ -1,12 +1,25 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/layouts/authentication/Signup.js
+ * Filename: rcc-frontend/src/components/layouts/authentication/Login.js
  * Key Options:
  * -
  * Revision History:
+ * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : created
+ * - Feb 3, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles
+ *     - created <form> <MyTextField>
+ * - Feb 5, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles added <Link to="\">
+ * - Feb 6, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated styles and added showPassword state
+ * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : completed showHidePassword()
+ * - Feb 8, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated restoration: scroll to top
  * - Feb 9, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : created and duplicated Login code
+ *   : moved to layouts/authentication
  */
 import React, {useState, useEffect} from 'react';
 import {Link as ReactLink, useLocation} from "react-router-dom";
@@ -17,7 +30,9 @@ import {Box,
         Avatar,
         Grid, 
         InputAdornment,
-        IconButton
+        IconButton,
+        FormControlLabel,
+        Checkbox,
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
@@ -47,14 +62,14 @@ const useStyles = makeStyles({
     "& img": {
     }
   },
-  signuptext: {
+  logintext: {
     fontSize:"2em",
     fontWeight: "bolder"
   },
   logo: {
     color: "#304ffe",
   },
-  signupbutton: {
+  loginbutton: {
     margin: "3.5vh 0 2vh 0",
     backgroundColor: "#4a64f8",
     minHeight: "5vh",
@@ -68,15 +83,13 @@ const useStyles = makeStyles({
     width: "55px",
     height: "55px"
   },
-  termsconditions: {
-    color:"#868788",
+  forgotpassword: {
     marginTop: "3vh",
     '& a': {
-      color:"#868788",
-      textDecoration: 'none',
+      color:"#868788"
     }
   },
-  login: {
+  signupnow: {
     margin: "1vh 0",
     '& a': {
       color:"#868788",
@@ -84,7 +97,7 @@ const useStyles = makeStyles({
     }
   },
 })
-function Signup() {
+function Login() {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const showHidePassword = () => {
@@ -104,8 +117,8 @@ function Signup() {
         <Box className={classes.icon}>
           <Avatar src={proudtaleLogo} className={classes.avatar}/>
         </Box>
-        <Typography variant="body1" className={classes.signuptext}>
-          Sign up
+        <Typography variant="body1" className={classes.logintext}>
+          Log in
         </Typography>
       </Box>
       <Box>
@@ -157,22 +170,24 @@ function Signup() {
             type="submit"
             fullWidth
             variant="contained"
-            className={classes.signupbutton}>
-            Sign up
+            className={classes.loginbutton}>
+            Log in
           </Button>
+          <FormControlLabel 
+            control={<Checkbox value="remember"
+                                color="default"
+                                />}
+            label="Remember me"
+            className={classes.formcontrollabel}/>
           <Box>
-            <Grid className={classes.termsconditions}>
-              Please Note: By continuing and signing up, you agree to Edureka&lsquo;s&nbsp;
+            <Grid className={classes.forgotpassword}>
               <ReactLink to="#">
-                <Box component="span" color="#fff">Terms & Conditions</Box>
-              </ReactLink> &nbsp;and&nbsp;
-              <ReactLink to="#">
-                <Box component="span" color="#fff">Privacy Policy.</Box>
-              </ReactLink> 
+                Forgot password?
+              </ReactLink>
             </Grid>
-            <Grid item className={classes.login}>
-              <ReactLink to="/authentication/login">
-                Already have an account? Log In
+            <Grid item className={classes.signupnow}>
+              <ReactLink to="/authentication/signup" variant="body2">
+                New to Proudtale? Sign up Now
               </ReactLink>
             </Grid>
           </Box>
@@ -182,4 +197,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Login

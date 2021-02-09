@@ -20,6 +20,9 @@ import {Box,
 import {makeStyles} from "@material-ui/styles";
 // components
 import Footer from "../layouts/Footer";
+import Signup from "../layouts/authentication/Signup";
+import Login from "../layouts/authentication/Login";
+import EmailVerification from "../layouts/authentication/EmailVerification";
 // images
 import headerImage from "../../assets/images/header-image-1st.jpg";
 // util
@@ -66,13 +69,17 @@ function Auth(prop) {
       path = getLastWordOfUrl(path, "/");
       setPath(path);
     },[pathname]);
-  console.log(path)
+  const tagInPaper = (path === "Signup"?<Signup />:
+                      path === "Login"?<Login />:
+                      path === "Emailverification"?<EmailVerification />:
+                      "");
   return (
       <Box className={classes.root}>
       <Box className={classes.fade}>
         <Container className={classes.container} maxWidth="sm">
           <CssBaseline />
           <Paper className={classes.paper}>
+            {tagInPaper}
           </Paper>
         </Container>
         <Box>

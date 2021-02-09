@@ -22,9 +22,6 @@ import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
 import Greet from "../src/components/pages/Greet";
 import Home from "../src/components/pages/Home";
-  // components-authentication
-import Login from "./components/pages/authentication/Login";
-// import Signup from "./components/pages/authentication/Signup";
 import Auth from "./components/pages/Auth";
 function App() {
   return (
@@ -33,7 +30,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Greet}/>
           <Route exact path="/home" component={Home}/>
-          <Route exact path="/authentication/login" component={Login} />
+          {/* Route for authentication component*/}
+          <Route exact path="/authentication/login" component={Auth} />
           <Route exact path="/authentication/signup" component={Auth} />
           <Route exact path="/authentication/emailverification" component={Auth} />
           <Route exact path="/authentication/confirmverification" component={Auth} />
