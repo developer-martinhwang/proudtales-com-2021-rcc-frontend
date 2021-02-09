@@ -89,12 +89,6 @@ const useStyles = makeStyles({
     fontSize:"2em",
     fontWeight: "bolder"
   },
-  main: {
-    color: "#fff"
-  },
-  textFiled: {
-    backgroundColor: "#fff",
-  },
   formcontrollabel: {
     color: "#fff",
     '& svg': {
