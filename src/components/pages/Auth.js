@@ -7,13 +7,15 @@
  * Revision History:
  * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
+ * - Feb 10, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated random background images
  */
 import React, {useState, useEffect} from 'react';
 import {useLocation} from "react-router-dom";
-// material-ui core 
+// material-ui core
 import {Box,
         Container,
-        CssBaseline, 
+        CssBaseline,
         Paper,
         } from '@material-ui/core';
 // material-ui style
@@ -24,15 +26,23 @@ import Signup from "../layouts/authentication/Signup";
 import Login from "../layouts/authentication/Login";
 import EmailVerification from "../layouts/authentication/EmailVerification";
 // images
-import headerImage from "../../assets/images/header-image-1st.jpg";
+import header_image_typewriter from "../../assets/images/header-image-typewriter.jpg";
+import header_image_bookstore from "../../assets/images/header-image-bookstore.jpg";
+import header_image_iamartist from "../../assets/images/header-image-iamartist.jpg";
+import header_image_webtoon from "../../assets/images/header-image-webtoon.jpg";
+const headerImage = [
+  {image:header_image_typewriter},
+  {image:header_image_bookstore},
+  {image:header_image_iamartist},
+  {image:header_image_webtoon}]
 // util
-import {getLastWordOfUrl} from "../../util/util"; //return the value of end index in an array of substrings
+import {getLastWordOfUrl, randomPicture} from "../../util/util"; //return the value of end index in an array of substrings
 const useStyles = makeStyles({
   root: {
     margin: "0",
     padding: "0",
     backgroundSize:"cover",
-    backgroundImage: `url(${headerImage})`,
+    backgroundImage: `url(${headerImage[randomPicture(headerImage)].image})`,
     backgroundPosition: "center",
     width:"100%",
     color: "white"

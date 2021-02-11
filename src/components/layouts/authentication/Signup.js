@@ -162,7 +162,7 @@ function Signup() {
           </Button>
           <Box>
             <Grid className={classes.termsconditions}>
-              Please Note: By continuing and signing up, you agree to Edureka&lsquo;s&nbsp;
+              Please Note: By continuing and signing up, you agree to Edureka&apos;s&nbsp;
               <ReactLink to="#">
                 <Box component="span" color="#fff">Terms & Conditions</Box>
               </ReactLink> &nbsp;and&nbsp;

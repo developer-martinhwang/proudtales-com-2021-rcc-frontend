@@ -9,14 +9,26 @@
  *   : created
  * - Jan 27, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated header Image
+ * - Feb 10, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated random header images
  */
 import React from "react";
-// material-ui core 
+// material-ui core
 import {Box} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
+// components
+import {randomPicture} from "../../util/util";
 // images
-import headerImage from "../../assets/images/header-image-1st.jpg"
+import header_image_typewriter from "../../assets/images/header-image-typewriter.jpg";
+import header_image_bookstore from "../../assets/images/header-image-bookstore.jpg";
+import header_image_iamartist from "../../assets/images/header-image-iamartist.jpg";
+import header_image_webtoon from "../../assets/images/header-image-webtoon.jpg";
+const headerImage = [
+  {image:header_image_typewriter},
+  {image:header_image_bookstore},
+  {image:header_image_iamartist},
+  {image:header_image_webtoon}]
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -24,7 +36,7 @@ const useStyles = makeStyles({
   },
   headerImage1: {
     backgroundSize:"cover",
-    backgroundImage: `url(${headerImage})`,
+    backgroundImage: `url(${headerImage[randomPicture(headerImage)].image})`,
     backgroundPosition: "center",
     height: "55vh",
     objectFit: "contain",

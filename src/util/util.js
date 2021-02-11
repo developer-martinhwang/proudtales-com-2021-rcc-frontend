@@ -9,11 +9,13 @@
  *   : created
  * - Feb 8, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : completed getLastWordOfUrl function
+ * - Feb 10, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated randomPicture()
  */
 
  // return the value of end index in an array of substrings
  export const getLastWordOfUrl= (str, separator, limit) => {
-    if(typeof str !== 'string'){ 
+    if(typeof str !== 'string'){
         return '';
     }
     else{
@@ -23,3 +25,7 @@
         return value;
     }
  }
+ // return random picture
+export const randomPicture = (arr) => {
+    return Math.floor(Math.random() * arr.length);
+}
