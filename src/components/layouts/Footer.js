@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/views/Footer.js
+ * Filename: rcc-frontend/src/components/layouts/Footer.js
  * Key Options:
  * -
  * Revision History:
@@ -22,10 +22,10 @@ import {Box, Typography, List, ListItem, Link} from "@material-ui/core";
 // material-ui styles
 import {makeStyles} from "@material-ui/styles";
 // material-ui icons
-import {Email, 
-        Facebook, 
-        Instagram, 
-        Twitter, 
+import {Email,
+        Facebook,
+        Instagram,
+        Twitter,
         LinkedIn,
         AccountBox,
         Home,
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     marginLeft: "0.2vw",
     padding: "0.3vh 0 0 0.2vw",
     color: "#304ffe",
-    textDecoration: 'none' 
+    textDecoration: 'none'
   },
   copyright: {
     fontSize:"0.95rem",

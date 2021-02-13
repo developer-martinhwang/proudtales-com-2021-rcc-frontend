@@ -8,10 +8,10 @@
  * - Jan 18, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
  * - Jan 26, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
- *   : updated Router 
+ *   : updated Router
  * - Feb 8, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : removed page components(ConfirmVerificaion.js, EmailVerification)
- *     changed <Route component = {Auth}> which are associated with auth 
+ *     changed <Route component = {Auth}> which are associated with auth
  */
 import "./App.css";
 import React from "react";
@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/authentication/login" component={Auth} />
           <Route exact path="/authentication/signup" component={Auth} />
           <Route exact path="/authentication/emailverification" component={Auth} />
-          <Route exact path="/authentication/confirmverification" component={Auth} />
+          <Route exact path="/authentication/confirmregistration" component={Auth} />
         </Switch>
       </Box>
     </Router>

@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/layouts/authentication/ConfirmVerification.js
+ * Filename: rcc-frontend/src/components/layouts/authentication/ConfirmRegistration.js
  * Key Options:
  * -
  * Revision History:
@@ -11,14 +11,14 @@
  *   : moved to layouts/authentication/
  */
 import React from 'react'
-// material-ui core 
+// material-ui core
 import {Box} from '@material-ui/core';
-function ConfirmVerification() {
+function ConfirmRegistration() {
     return (
         <Box>
-            
+
         </Box>
     )
 }
 
-export default ConfirmVerification
+export default ConfirmRegistration

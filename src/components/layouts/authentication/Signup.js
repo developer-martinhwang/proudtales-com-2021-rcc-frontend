@@ -7,6 +7,8 @@
  * Revision History:
  * - Feb 9, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created and duplicated Login code
+ * - Feb 9, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : added <MyTextField /> for Name and Confirm Password
  */
 import React, {useState, useEffect} from 'react';
 import {Link as ReactLink, useLocation} from "react-router-dom";
@@ -25,7 +27,8 @@ import {makeStyles} from "@material-ui/styles";
 import {Email, 
         VpnKey,
         Visibility,
-        VisibilityOff}from "@material-ui/icons";
+        VisibilityOff,
+        Person}from "@material-ui/icons";
 // components
 import MyTextField from "../../mytags/MyTextField";
 // icons
@@ -115,6 +118,22 @@ function Signup() {
           margin="normal"
           required={true}
           fullWidth={true}
+          id="name"
+          label="Full Name"
+          name="name"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Person className={classes.logo}/>
+              </InputAdornment>
+            ),
+          }}
+          autoFocus={true}/>
+        <MyTextField
+          variant="outlined"
+          margin="normal"
+          required={true}
+          fullWidth={true}
           id="email"
           label="Email"
           name="email"
@@ -125,8 +144,7 @@ function Signup() {
                 <Email className={classes.logo}/>
               </InputAdornment>
             ),
-          }}
-          autoFocus={true}/>
+          }}/>
         <MyTextField 
           variant="outlined"
           margin="normal"
@@ -153,29 +171,55 @@ function Signup() {
             )
           }}
           autoComplete="current-password"/>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            className={classes.signupbutton}>
-            Sign up
-          </Button>
-          <Box>
-            <Grid className={classes.termsconditions}>
-              Please Note: By continuing and signing up, you agree to Edureka&apos;s&nbsp;
-              <ReactLink to="#">
-                <Box component="span" color="#fff">Terms & Conditions</Box>
-              </ReactLink> &nbsp;and&nbsp;
-              <ReactLink to="#">
-                <Box component="span" color="#fff">Privacy Policy.</Box>
-              </ReactLink> 
-            </Grid>
-            <Grid item className={classes.login}>
-              <ReactLink to="/authentication/login">
-                Already have an account? Log In
-              </ReactLink>
-            </Grid>
-          </Box>
+        <MyTextField 
+          variant="outlined"
+          margin="normal"
+          required={true}
+          fullWidth={true}
+          name="confirmPassword"
+          label="Confirm Password"
+          type={showPassword?"text":"password"}
+          id="confirmPassword"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <VpnKey className={classes.logo}/>
+              </InputAdornment>
+            ),
+            endAdornment:(
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toogle password visibility"
+                  onClick={showHidePassword}>
+                  {showHidePasswordIcon}
+                </IconButton>
+              </InputAdornment>
+            )
+          }}
+          autoComplete="confirm-password"/>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          className={classes.signupbutton}>
+          Sign up
+        </Button>
+        <Box>
+          <Grid className={classes.termsconditions}>
+            Please Note: By continuing and signing up, you agree to Edureka&apos;s&nbsp;
+            <ReactLink to="#">
+              <Box component="span" color="#fff">Terms & Conditions</Box>
+            </ReactLink> &nbsp;and&nbsp;
+            <ReactLink to="#">
+              <Box component="span" color="#fff">Privacy Policy.</Box>
+            </ReactLink> 
+          </Grid>
+          <Grid item className={classes.login}>
+            <ReactLink to="/authentication/login">
+              Already have an account? Log In
+            </ReactLink>
+          </Grid>
+        </Box>
         </form>
       </Box>
     </Box>

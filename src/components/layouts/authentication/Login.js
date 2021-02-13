@@ -23,12 +23,12 @@
  */
 import React, {useState, useEffect} from 'react';
 import {Link as ReactLink, useLocation} from "react-router-dom";
-// material-ui core 
+// material-ui core
 import {Box,
         Typography,
         Button,
         Avatar,
-        Grid, 
+        Grid,
         InputAdornment,
         IconButton,
         FormControlLabel,
@@ -37,7 +37,7 @@ import {Box,
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // material-ui icons
-import {Email, 
+import {Email,
         VpnKey,
         Visibility,
         VisibilityOff}from "@material-ui/icons";
@@ -93,9 +93,16 @@ const useStyles = makeStyles({
     margin: "1vh 0",
     '& a': {
       color:"#868788",
-      textDecoration: 'none' 
+      textDecoration: 'none'
     }
   },
+  formcontrollabel: {
+      color:"#fff",
+      paddingTop: "1vh",
+      '& svg': {
+          color:"#fff",
+      }
+  }
 })
 function Login() {
   const classes = useStyles();
@@ -123,49 +130,49 @@ function Login() {
       </Box>
       <Box>
         <form className={classes.form}>
-        <MyTextField
-          variant="outlined"
-          margin="normal"
-          required={true}
-          fullWidth={true}
-          id="email"
-          label="Email"
-          name="email"
-          autoComplete="email"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Email className={classes.logo}/>
-              </InputAdornment>
-            ),
-          }}
-          autoFocus={true}/>
-        <MyTextField 
-          variant="outlined"
-          margin="normal"
-          required={true}
-          fullWidth={true}
-          name="password"
-          label="Password"
-          type={showPassword?"text":"password"}
-          id="password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <VpnKey className={classes.logo}/>
-              </InputAdornment>
-            ),
-            endAdornment:(
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toogle password visibility"
-                  onClick={showHidePassword}>
-                  {showHidePasswordIcon}
-                </IconButton>
-              </InputAdornment>
-            )
-          }}
-          autoComplete="current-password"/>
+          <MyTextField
+            variant="outlined"
+            margin="normal"
+            required={true}
+            fullWidth={true}
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email className={classes.logo}/>
+                </InputAdornment>
+              ),
+            }}
+            autoFocus={true}/>
+          <MyTextField
+            variant="outlined"
+            margin="normal"
+            required={true}
+            fullWidth={true}
+            name="password"
+            label="Password"
+            type={showPassword?"text":"password"}
+            id="password"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <VpnKey className={classes.logo}/>
+                </InputAdornment>
+              ),
+              endAdornment:(
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toogle password visibility"
+                    onClick={showHidePassword}>
+                    {showHidePasswordIcon}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+            autoComplete="current-password"/>
           <Button
             type="submit"
             fullWidth
@@ -173,10 +180,8 @@ function Login() {
             className={classes.loginbutton}>
             Log in
           </Button>
-          <FormControlLabel 
-            control={<Checkbox value="remember"
-                                color="default"
-                                />}
+          <FormControlLabel
+            control={<Checkbox value="remember"/>}
             label="Remember me"
             className={classes.formcontrollabel}/>
           <Box>

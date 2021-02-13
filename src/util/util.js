@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/forms/Signup.js
+ * Filename: rcc-frontend/src/components/util/util.js
  * Key Options:
  * -
  * Revision History:
@@ -14,7 +14,8 @@
  */
 
  // return the value of end index in an array of substrings
- export const getLastWordOfUrl= (str, separator, limit) => {
+ // parameter: pass string as str, separator, number as limit
+export const getLastWordOfUrl= (str, separator, limit) => {
     if(typeof str !== 'string'){
         return '';
     }
@@ -26,6 +27,7 @@
     }
  }
  // return random picture
+ // parameter: pass array as arr
 export const randomPicture = (arr) => {
     return Math.floor(Math.random() * arr.length);
 }

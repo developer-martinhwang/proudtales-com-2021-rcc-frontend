@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/views/Navbar.js
+ * Filename: rcc-frontend/src/components/layouts/Navbar.js
  * Key Options:
  * -
  * Revision History:
@@ -14,7 +14,7 @@
  */
 import React, {useState, useEffect} from "react";
 import {useLocation, Link} from "react-router-dom";
-// material-ui core 
+// material-ui core
 import {Box} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 // material-ui icons

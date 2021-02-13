@@ -79,6 +79,7 @@ function Auth(prop) {
       path = getLastWordOfUrl(path, "/");
       setPath(path);
     },[pathname]);
+  // depending on url return different tag inside <Paper>
   const tagInPaper = (path === "Signup"?<Signup />:
                       path === "Login"?<Login />:
                       path === "Emailverification"?<EmailVerification />:

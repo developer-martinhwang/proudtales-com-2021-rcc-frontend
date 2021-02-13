@@ -1,7 +1,7 @@
 /*
  * Copyright(c)2021 developer.martinhwang@gmail.com
  * All rights reserved.
- * Filename: rcc-frontend/src/components/views/Storycard.js
+ * Filename: rcc-frontend/src/components/layouts/Storycard.js
  * Key Options:
  * -
  * Revision History:
@@ -13,7 +13,7 @@
  *   : removed flexDirection prop and added function for flexDirection
  */
 import React from "react";
-// material-ui core 
+// material-ui core
 import {Box, Typography} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
@@ -74,7 +74,7 @@ const useStyles = makeStyles({
 })
 // function:
 // if index # even flexDirection row-reverse
-// # odd flexDirection row 
+// # odd flexDirection row
 const flexDirection = (index) => {
     if (index%2 === 0) {
         return "row-reverse"
