@@ -34,7 +34,10 @@ import MyTextField from "../../mytags/MyTextField";
 // icons
 import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
 // util
-import {checkPassword} from "../../../util/util";
+import {passwordCheck, 
+        passwordConfirmPasswordMatch,
+        emailCheck,
+        fullnameCheck} from "../../../util/util";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -90,12 +93,17 @@ function Signup() {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
-    name: "",
+    fullname: "",
     email: "",
     password: "",
     confirmPassword: ""
   })
-  let passwordErrors = null;
+  const [errors, setErrors] = useState({
+    fullname: [],
+    email: [],
+    password: [],
+    confirmPassword: []
+  });
   // display password or not
   const showHidePassword = () => {
     setShowPassword(!showPassword);
@@ -115,19 +123,27 @@ function Signup() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    const check = checkPassword(user.password, user.confirmPassword); 
-    // console.log(check);
-    passwordErrors = check;
-    if(check.length === 0){
+    const checkFN = fullnameCheck(user.name);
+    const checkE = emailCheck(user.email);
+    const checkPw = passwordCheck(user.password); 
+    const matchPwCpw = passwordConfirmPasswordMatch(user.password, user.confirmPassword);
+    console.log(checkPw, matchPwCpw)
+    setErrors({
+      fullname:checkFN,
+      email:checkE,
+      password:checkPw,
+      confirmPassword:matchPwCpw 
+    });
+    if(checkPw.length === 0){
       const newUser = {
-        name: user.name,
-        email: user.email,
-        password: user.password,
-        confrimPassword: user.confirmPassword
+        fullname:user.fullname,
+        email:user.email,
+        password:user.password,
+        confrimPassword:user.confirmPassword
       }
       console.log(newUser);
     }else {
-      console.log(passwordErrors);
+      console.log(errors);
     }
   }
   const showHidePasswordIcon = (showPassword?<Visibility/>:
@@ -152,6 +168,7 @@ function Signup() {
           id="name"
           label="Full Name"
           type="text"
+          helperText={errors.fullname}
           name="name"
           value={user.name}
           InputProps={{
@@ -171,6 +188,7 @@ function Signup() {
           id="email"
           label="Email"
           type="email"
+          helperText={errors.email}
           name="email"
           value={user.email}
           autoComplete="email"
@@ -191,6 +209,7 @@ function Signup() {
           label="Password"
           value={user.password}
           type={showPassword?"text":"password"}
+          helperText={errors.password}
           id="password"
           InputProps={{
             startAdornment: (
@@ -221,6 +240,7 @@ function Signup() {
           label="Confirm Password"
           value={user.confirmPassword}
           type={showPassword?"text":"password"}
+          helperText={errors.confirmPassword}
           id="confirmPassword"
           InputProps={{
             startAdornment: (

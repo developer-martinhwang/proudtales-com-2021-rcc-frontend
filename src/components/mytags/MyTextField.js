@@ -20,26 +20,34 @@ import {withStyles} from "@material-ui/styles";
 const styles = {
     root: {
         '& label':{
-          color: "#fff",
+          color: "#304ffe",
         },
         '& label.Mui-focused': {
-          color: "#304ffe",
+          color: "#fff",
         },
         '& .MuiOutlinedInput-root': {
           '& fieldset': {
-            borderColor: "#fff",
+            borderColor: "#304ffe",
           },
           '&.Mui-focused fieldset': {
-            borderColor: "#304ffe",
+            borderColor: "#fff",
           },
           '& input': {
             color: "#fff",
+            fontSize: "1.1em",
             marginTop: "0.3vh"
           },
-          "&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root": {
+          "& .MuiInputAdornment-root .MuiSvgIcon-root": {
             color: "#304ffe"
-          }
+          },
+          "&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "#fff"
+          },
         },
+        "& .MuiFormHelperText-root": {
+          color: "#fff",
+          fontSize: "1em",
+        }
     },
 };
 function MyTextField(prop) {
@@ -58,6 +66,7 @@ function MyTextField(prop) {
                 InputProps={prop.InputProps}
                 autoFocus={prop.autoFocus}
                 type={prop.type}
+                helperText={prop.helperText}
                 onChange={prop.onChange}>
             </TextField>
         </Box>
