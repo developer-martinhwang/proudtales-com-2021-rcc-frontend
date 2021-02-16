@@ -7,6 +7,8 @@
  * Revision History:
  * - Feb 7, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created and updated MyTextField components
+ * - Feb 15, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated style(if InputAdornment focused change styles)
  */
 import React from "react";
 // material-ui core 
@@ -18,21 +20,24 @@ import {withStyles} from "@material-ui/styles";
 const styles = {
     root: {
         '& label':{
-          color: "#304ffe",
+          color: "#fff",
         },
         '& label.Mui-focused': {
-          color: "#fff",
+          color: "#304ffe",
         },
         '& .MuiOutlinedInput-root': {
           '& fieldset': {
-            borderColor: "#304ffe",
+            borderColor: "#fff",
           },
-          '&:hover fieldset': {
-            borderColor: "#4a64f8",
+          '&.Mui-focused fieldset': {
+            borderColor: "#304ffe",
           },
           '& input': {
             color: "#fff",
             marginTop: "0.3vh"
+          },
+          "&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "#304ffe"
           }
         },
     },
@@ -52,7 +57,8 @@ function MyTextField(prop) {
                 autoComplete={prop.autoComplete}
                 InputProps={prop.InputProps}
                 autoFocus={prop.autoFocus}
-                type={prop.type}>
+                type={prop.type}
+                onChange={prop.onChange}>
             </TextField>
         </Box>
     )

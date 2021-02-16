@@ -66,9 +66,6 @@ const useStyles = makeStyles({
     fontSize:"2em",
     fontWeight: "bolder"
   },
-  logo: {
-    color: "#304ffe",
-  },
   loginbutton: {
     margin: "3.5vh 0 2vh 0",
     backgroundColor: "#4a64f8",
@@ -114,10 +111,9 @@ function Login() {
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    setShowPassword()
   },[pathname])
-  const showHidePasswordIcon = (showPassword?<Visibility className={classes.logo}/>:
-    <VisibilityOff className={classes.logo}/>)
+  const showHidePasswordIcon = (showPassword?<Visibility/>:
+    <VisibilityOff/>)
   return (
     <Box className={classes.root}>
       <Box className={classes.head}>
@@ -137,12 +133,13 @@ function Login() {
             fullWidth={true}
             id="email"
             label="Email"
+            type="email"
             name="email"
             autoComplete="email"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <Email className={classes.logo}/>
+                  <Email/>
                 </InputAdornment>
               ),
             }}
@@ -159,7 +156,7 @@ function Login() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <VpnKey className={classes.logo}/>
+                  <VpnKey/>
                 </InputAdornment>
               ),
               endAdornment:(

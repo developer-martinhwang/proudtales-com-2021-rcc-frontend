@@ -33,6 +33,8 @@ import {Email,
 import MyTextField from "../../mytags/MyTextField";
 // icons
 import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
+// util
+import {checkPassword} from "../../../util/util";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -53,9 +55,6 @@ const useStyles = makeStyles({
   signuptext: {
     fontSize:"2em",
     fontWeight: "bolder"
-  },
-  logo: {
-    color: "#304ffe",
   },
   signupbutton: {
     margin: "3.5vh 0 2vh 0",
@@ -90,6 +89,14 @@ const useStyles = makeStyles({
 function Signup() {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  })
+  let passwordErrors = null;
+  // display password or not
   const showHidePassword = () => {
     setShowPassword(!showPassword);
   }
@@ -97,10 +104,34 @@ function Signup() {
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    setShowPassword()
   },[pathname])
-  const showHidePasswordIcon = (showPassword?<Visibility className={classes.logo}/>:
-    <VisibilityOff className={classes.logo}/>)
+  const handleChange = (e) => {
+    const {id, value} = e.target;
+    setUser(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
+    console.log(id);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const check = checkPassword(user.password, user.confirmPassword); 
+    // console.log(check);
+    passwordErrors = check;
+    if(check.length === 0){
+      const newUser = {
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        confrimPassword: user.confirmPassword
+      }
+      console.log(newUser);
+    }else {
+      console.log(passwordErrors);
+    }
+  }
+  const showHidePasswordIcon = (showPassword?<Visibility/>:
+    <VisibilityOff/>)
   return (
     <Box className={classes.root}>
       <Box className={classes.head}>
@@ -112,7 +143,7 @@ function Signup() {
         </Typography>
       </Box>
       <Box>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
         <MyTextField
           variant="outlined"
           margin="normal"
@@ -120,15 +151,18 @@ function Signup() {
           fullWidth={true}
           id="name"
           label="Full Name"
+          type="text"
           name="name"
+          value={user.name}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Person className={classes.logo}/>
+                <Person/>
               </InputAdornment>
             ),
           }}
-          autoFocus={true}/>
+          autoFocus={true}
+          onChange={handleChange}/>
         <MyTextField
           variant="outlined"
           margin="normal"
@@ -136,15 +170,18 @@ function Signup() {
           fullWidth={true}
           id="email"
           label="Email"
+          type="email"
           name="email"
+          value={user.email}
           autoComplete="email"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Email className={classes.logo}/>
+                <Email/>
               </InputAdornment>
             ),
-          }}/>
+          }}
+          onChange={handleChange}/>
         <MyTextField 
           variant="outlined"
           margin="normal"
@@ -152,25 +189,29 @@ function Signup() {
           fullWidth={true}
           name="password"
           label="Password"
+          value={user.password}
           type={showPassword?"text":"password"}
           id="password"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKey className={classes.logo}/>
+                <VpnKey />
               </InputAdornment>
             ),
             endAdornment:(
-              <InputAdornment position="end">
+              <InputAdornment 
+                position="end">
                 <IconButton
                   aria-label="toogle password visibility"
+                  id="showHidePassword"
                   onClick={showHidePassword}>
                   {showHidePasswordIcon}
                 </IconButton>
               </InputAdornment>
             )
           }}
-          autoComplete="current-password"/>
+          autoComplete="current-password"
+          onChange={handleChange}/>
         <MyTextField 
           variant="outlined"
           margin="normal"
@@ -178,25 +219,17 @@ function Signup() {
           fullWidth={true}
           name="confirmPassword"
           label="Confirm Password"
+          value={user.confirmPassword}
           type={showPassword?"text":"password"}
           id="confirmPassword"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKey className={classes.logo}/>
+                <VpnKey/>
               </InputAdornment>
-            ),
-            endAdornment:(
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toogle password visibility"
-                  onClick={showHidePassword}>
-                  {showHidePasswordIcon}
-                </IconButton>
-              </InputAdornment>
-            )
-          }}
-          autoComplete="confirm-password"/>
+          )}}
+          autoComplete="confirm-password"
+          onChange={handleChange}/>
         <Button
           type="submit"
           fullWidth

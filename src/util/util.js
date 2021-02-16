@@ -31,3 +31,20 @@ export const getLastWordOfUrl= (str, separator, limit) => {
 export const randomPicture = (arr) => {
     return Math.floor(Math.random() * arr.length);
 }
+// check password
+export const checkPassword = (password, confirmPassword) => {
+    let passwordError = [];
+    const passwordLength = password.length < 8 ;
+    if(passwordLength) {
+        passwordError.push("Password should be more than 8");
+    }
+    if(password !== confirmPassword){
+        passwordError.push("Password do not match with confirmPassword");
+    }
+    return passwordError;
+}
+// check email
+export const emailCheck = () => {
+    let emailError = ""
+    return emailError;
+}
