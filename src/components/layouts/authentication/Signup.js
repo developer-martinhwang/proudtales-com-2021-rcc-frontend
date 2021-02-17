@@ -11,6 +11,8 @@
  *   : added <MyTextField /> for Name and Confirm Password
  * - Feb 16, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : updated validate input value
+ * - Feb 16, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : added terms Conditions & privacy policy dialog
  */
 import React, {useState, useEffect} from 'react';
 import {Link as ReactLink, useLocation} from "react-router-dom";
@@ -21,7 +23,8 @@ import {Box,
         Avatar,
         Grid, 
         InputAdornment,
-        IconButton
+        IconButton,
+        Link
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
@@ -33,6 +36,8 @@ import {Email,
         Person}from "@material-ui/icons";
 // components
 import MyTextField from "../../mytags/MyTextField";
+import MyDialog from "../../mytags/MyDialog";
+import {termsConditionsContent} from "../termsConditionsPrivacyPolicy";
 // icons
 import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
 // util
@@ -90,6 +95,14 @@ const useStyles = makeStyles({
       textDecoration: 'none' 
     }
   },
+  link: {
+    '& span': {
+      color: "#fff",
+    },
+    '&:hover': {
+      cursor: "pointer"
+    }
+  }
 })
 function Signup() {
   const classes = useStyles();
@@ -106,23 +119,30 @@ function Signup() {
     password: [],
     confirmPassword: ""
   });
-  // display password or not
-  const showHidePassword = () => {
-    setShowPassword(!showPassword);
-  }
-  // restoration: scroll to top
+  const [dialog, setDialog] = useState({
+    termsConditions: false,
+    privacyPolicy: false
+  })
+//restoration
+ // scroll to top
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   },[pathname])
+  //signup submit
+  // display password or hide
+  const showHidePassword = () => {
+    setShowPassword(!showPassword);
+  }
   const handleChange = (e) => {
     const {id, value} = e.target;
     setUser(prevState => ({
       ...prevState,
       [id]: value
     }));
-    console.log(id);
   }
+  const showHidePasswordIcon = (showPassword?<Visibility/>:
+    <VisibilityOff/>);
   // submit signup form 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -152,8 +172,33 @@ function Signup() {
       console.log(errors);
     }
   }
-  const showHidePasswordIcon = (showPassword?<Visibility/>:
-    <VisibilityOff/>)
+//dialog
+  // handle dialog open & close
+  const handleDialogOpen = (e) => {
+    const {id} = e.target.parentElement;
+    console.log(id);
+    setDialog(prevState => ({
+      ...prevState,
+      [id]: true
+    }))
+  }
+  const handleDialogClose = () => {
+    setDialog({
+      termsConditions: false,
+      privacyPolicy: false
+    })
+  }
+  
+  const termsConditions = (
+    <MyDialog
+      dialogTitleActive={true}
+      dialogActionsActive={true}
+      onClose={handleDialogClose}
+      open={dialog.termsConditions}
+      title="Terms & Conditions"
+      dividers={true}
+      content={termsConditionsContent}
+    />);
   return (
     <Box className={classes.root}>
       <Box className={classes.head}>
@@ -265,13 +310,13 @@ function Signup() {
         </Button>
         <Box>
           <Grid className={classes.termsconditions}>
-            Please Note: By continuing and signing up, you agree to Edureka&apos;s&nbsp;
-            <ReactLink to="#">
-              <Box component="span" color="#fff">Terms & Conditions</Box>
-            </ReactLink> &nbsp;and&nbsp;
-            <ReactLink to="#">
-              <Box component="span" color="#fff">Privacy Policy.</Box>
-            </ReactLink> 
+            Please Note: By continuing and signing up, you agree to proudtales&apos;s&nbsp;
+            <Link id="termsConditions" className={classes.link} onClick={handleDialogOpen}>
+              <Box component="span">Terms & Conditions</Box>
+            </Link> &nbsp;and&nbsp;
+            <Link id="privacyPolicy" className={classes.link}onClick={handleDialogOpen}>
+              <Box component="span">Privacy Policy.</Box>
+            </Link> 
           </Grid>
           <Grid item className={classes.login}>
             <ReactLink to="/authentication/login">
@@ -281,6 +326,7 @@ function Signup() {
         </Box>
         </form>
       </Box>
+      {termsConditions}
     </Box>
   )
 }
