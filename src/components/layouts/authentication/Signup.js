@@ -24,7 +24,9 @@ import {Box,
         Grid, 
         InputAdornment,
         IconButton,
-        Link
+        Link,
+        Checkbox,
+        FormControlLabel,
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
@@ -37,7 +39,10 @@ import {Email,
 // components
 import MyTextField from "../../mytags/MyTextField";
 import MyDialog from "../../mytags/MyDialog";
-import {termsConditionsContent} from "../termsConditionsPrivacyPolicy";
+import {termsConditionsTitle, 
+        termsConditionsContent,
+        privacyPolicyTitle,
+        privacyPolicyContent} from "../dialog/signupDialog";
 // icons
 import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
 // util
@@ -59,8 +64,6 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     marginBottom: "3vh",
-    "& img": {
-    }
   },
   signuptext: {
     fontSize:"2em",
@@ -92,7 +95,9 @@ const useStyles = makeStyles({
     margin: "1vh 0",
     '& a': {
       color:"#868788",
-      textDecoration: 'none' 
+      '&:hover': {
+        color:"#fff"
+      }
     }
   },
   link: {
@@ -101,6 +106,20 @@ const useStyles = makeStyles({
     },
     '&:hover': {
       cursor: "pointer"
+    }
+  },
+  formcontrollabel: {
+    color:"#fff",
+    paddingTop: "1vh",
+    '& .MuiIconButton-label:hover ': {
+        backgroundColor: "rgba(191, 187, 187, 0.04)",
+    },
+    '& svg': {
+        color:"#fff",
+        fontSize: "1.2em"
+    },
+    '& .Mui-checked:hover span': {
+      backgroundColor: "rgba(191, 187, 187, 0.04)"
     }
   }
 })
@@ -111,13 +130,14 @@ function Signup() {
     name: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    agreeTermsConditionsPrivcyPolicy: true
   })
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     password: [],
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [dialog, setDialog] = useState({
     termsConditions: false,
@@ -165,7 +185,8 @@ function Signup() {
         name:user.name,
         email:user.email,
         password:user.password,
-        confrimPassword:user.confirmPassword
+        confrimPassword:user.confirmPassword,
+        agreeTermsConditionsPrivcyPolicy:user.agreeTermsConditionsPrivcyPolicy
       }
       console.log(newUser);
     }else {
@@ -176,7 +197,6 @@ function Signup() {
   // handle dialog open & close
   const handleDialogOpen = (e) => {
     const {id} = e.target.parentElement;
-    console.log(id);
     setDialog(prevState => ({
       ...prevState,
       [id]: true
@@ -188,16 +208,24 @@ function Signup() {
       privacyPolicy: false
     })
   }
-  
+  // dialog: terms & conditions and privacy policy
   const termsConditions = (
     <MyDialog
       dialogTitleActive={true}
-      dialogActionsActive={true}
       onClose={handleDialogClose}
       open={dialog.termsConditions}
-      title="Terms & Conditions"
+      title={termsConditionsTitle}
       dividers={true}
       content={termsConditionsContent}
+    />);
+  const privacyPolicy = (
+    <MyDialog
+      dialogTitleActive={true}
+      onClose={handleDialogClose}
+      open={dialog.privacyPolicy}
+      title={privacyPolicyTitle}
+      dividers={true}
+      content={privacyPolicyContent}
     />);
   return (
     <Box className={classes.root}>
@@ -301,6 +329,11 @@ function Signup() {
           )}}
           autoComplete="confirm-password"
           onChange={handleChange}/>
+        <FormControlLabel
+          control={<Checkbox id="agreeTermsConditionsPrivcyPolicy" 
+                    required={true}/>}
+          label="I agree to the Terms and Conditions and Privacy Policy"
+          className={classes.formcontrollabel}/>
         <Button
           type="submit"
           fullWidth
@@ -327,6 +360,7 @@ function Signup() {
         </form>
       </Box>
       {termsConditions}
+      {privacyPolicy}
     </Box>
   )
 }

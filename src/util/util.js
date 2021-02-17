@@ -54,29 +54,29 @@ export const passwordCheck = (password) => {
 }
 // match password with confirmPassword
 export const passwordConfirmPasswordMatch = (password, confirmPassword) => {
-    let confrimPasswordErrors = "";
+    let confrimPasswordError = "";
     if(password !== confirmPassword){
-        confrimPasswordErrors = "Password do not match with confirmPassword";
+        confrimPasswordError = "Password do not match with confirmPassword";
     }
-    return confrimPasswordErrors;
+    return confrimPasswordError;
 }
 // check email
 export const emailCheck = (email) => {
-    let emailErrors = "";
+    let emailError = "";
     // Regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(!emailRegex.test(email)) {
-        emailErrors = "Email should be valid, e.g., developer.martinhwang@gmail.com"
+        emailError = "Email should be valid, e.g., developer.martinhwang@gmail.com"
     }
-    return emailErrors;
+    return emailError;
 }
 // check full name 
 export const nameCheck = (name) => {
-    let nameErrors = ""
+    let nameError = ""
     // name Regex
     const nameRegex = /^[0-9a-zA-Z]+$/;
     if (!nameRegex.test(name)) {
-        nameErrors = "Name should be valid, e.g., MartinHwang" 
+        nameError = "Name should be valid, e.g., MartinHwang" 
     }
-    return nameErrors;
+    return nameError;
 }

@@ -59,8 +59,6 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     marginBottom: "3vh",
-    "& img": {
-    }
   },
   logintext: {
     fontSize:"2em",
@@ -90,14 +88,22 @@ const useStyles = makeStyles({
     margin: "1vh 0",
     '& a': {
       color:"#868788",
-      textDecoration: 'none'
+      '&:hover': {
+        color:"#fff"
+      }
     }
   },
   formcontrollabel: {
       color:"#fff",
       paddingTop: "1vh",
+      '& .MuiIconButton-label:hover ': {
+        backgroundColor: "rgba(191, 187, 187, 0.04)",
+      },
       '& svg': {
           color:"#fff",
+      },
+      '& .Mui-checked:hover span': {
+        backgroundColor: "rgba(191, 187, 187, 0.04)"
       }
   }
 })
