@@ -9,6 +9,8 @@
  *   : created and duplicated Login code
  * - Feb 9, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : added <MyTextField /> for Name and Confirm Password
+ * - Feb 16, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
+ *   : updated validate input value
  */
 import React, {useState, useEffect} from 'react';
 import {Link as ReactLink, useLocation} from "react-router-dom";
@@ -99,10 +101,10 @@ function Signup() {
     confirmPassword: ""
   })
   const [errors, setErrors] = useState({
-    fullname: [],
-    email: [],
+    fullname: "",
+    email: "",
     password: [],
-    confirmPassword: []
+    confirmPassword: ""
   });
   // display password or not
   const showHidePassword = () => {
@@ -121,20 +123,24 @@ function Signup() {
     }));
     console.log(id);
   }
+  // submit signup form 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const checkFN = fullnameCheck(user.name);
+    const checkFN = fullnameCheck(user.fullname);
     const checkE = emailCheck(user.email);
     const checkPw = passwordCheck(user.password); 
     const matchPwCpw = passwordConfirmPasswordMatch(user.password, user.confirmPassword);
-    console.log(checkPw, matchPwCpw)
     setErrors({
       fullname:checkFN,
       email:checkE,
       password:checkPw,
       confirmPassword:matchPwCpw 
     });
-    if(checkPw.length === 0){
+    // before submit validation check: fullname, email, password, matchPW&confirmPW
+    if(checkPw.length === 0 && 
+       checkFN === "" &&
+       checkE === "" &&
+       matchPwCpw === ""){
       const newUser = {
         fullname:user.fullname,
         email:user.email,
@@ -165,12 +171,12 @@ function Signup() {
           margin="normal"
           required={true}
           fullWidth={true}
-          id="name"
+          id="fullname"
           label="Full Name"
           type="text"
           helperText={errors.fullname}
           name="name"
-          value={user.name}
+          value={user.fullname}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

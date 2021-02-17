@@ -40,7 +40,7 @@ export const passwordCheck = (password) => {
     const passwordLength = password.length < 8 ;
     // Regex
     const specialCharacterRegex = /^(.*[-!$%^&*()_+|~=`{}[:;<>?,.@#])/;
-    const upperCaseRegex = /^[A-Z]/;
+    const upperCaseRegex = /^(.*[A-Z])/;
     if(passwordLength) {
         passwordErrors.push("should be more than 8, \n");
     }
