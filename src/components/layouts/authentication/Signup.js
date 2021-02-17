@@ -39,7 +39,7 @@ import proudtaleLogo from "../../../assets/icons/proudtalelogo.png";
 import {passwordCheck, 
         passwordConfirmPasswordMatch,
         emailCheck,
-        fullnameCheck} from "../../../util/util";
+        nameCheck} from "../../../util/util";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -95,13 +95,13 @@ function Signup() {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
-    fullname: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: ""
   })
   const [errors, setErrors] = useState({
-    fullname: "",
+    name: "",
     email: "",
     password: [],
     confirmPassword: ""
@@ -126,23 +126,23 @@ function Signup() {
   // submit signup form 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const checkFN = fullnameCheck(user.fullname);
+    const checkFN = nameCheck(user.name);
     const checkE = emailCheck(user.email);
     const checkPw = passwordCheck(user.password); 
     const matchPwCpw = passwordConfirmPasswordMatch(user.password, user.confirmPassword);
     setErrors({
-      fullname:checkFN,
+      name:checkFN,
       email:checkE,
       password:checkPw,
       confirmPassword:matchPwCpw 
     });
-    // before submit validation check: fullname, email, password, matchPW&confirmPW
+    // before submit validation check: name, email, password, matchPW&confirmPW
     if(checkPw.length === 0 && 
        checkFN === "" &&
        checkE === "" &&
        matchPwCpw === ""){
       const newUser = {
-        fullname:user.fullname,
+        name:user.name,
         email:user.email,
         password:user.password,
         confrimPassword:user.confirmPassword
@@ -171,12 +171,12 @@ function Signup() {
           margin="normal"
           required={true}
           fullWidth={true}
-          id="fullname"
-          label="Full Name"
+          id="name"
+          label="Name"
           type="text"
-          helperText={errors.fullname}
+          helperText={errors.name}
           name="name"
-          value={user.fullname}
+          value={user.name}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

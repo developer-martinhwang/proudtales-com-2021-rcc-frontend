@@ -13,7 +13,7 @@
  *   : updated randomPicture()
  * - Feb 10, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : modified passwordCheck(), passwordConfirmPasswordMatch()
- *     added emailCheck(), fullnameCheck()
+ *     added emailCheck(), nameCheck()
  */
 // authentication
  // return the value of end index in an array of substrings
@@ -71,12 +71,12 @@ export const emailCheck = (email) => {
     return emailErrors;
 }
 // check full name 
-export const fullnameCheck = (fullname) => {
-    let fullnameErrors = ""
-    // fullname Regex
-    const fullnameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    if (!fullnameRegex.test(fullname)) {
-        fullnameErrors = "Full name should be valid, e.g., Martin Hwang" 
+export const nameCheck = (name) => {
+    let nameErrors = ""
+    // name Regex
+    const nameRegex = /^[0-9a-zA-Z]+$/;
+    if (!nameRegex.test(name)) {
+        nameErrors = "Name should be valid, e.g., MartinHwang" 
     }
-    return fullnameErrors;
+    return nameErrors;
 }
