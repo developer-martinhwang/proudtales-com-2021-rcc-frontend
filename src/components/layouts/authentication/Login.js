@@ -31,8 +31,8 @@ import {Box,
         Grid,
         InputAdornment,
         IconButton,
-        FormControlLabel,
-        Checkbox,
+        // FormControlLabel,
+        // Checkbox,
         } from '@material-ui/core';
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
@@ -183,16 +183,16 @@ function Login() {
             className={classes.loginbutton}>
             Log in
           </Button>
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember"/>}
             label="Remember me"
-            className={classes.formcontrollabel}/>
+            className={classes.formcontrollabel}/> */}
           <Box>
-            <Grid className={classes.forgotpassword}>
+            {/* <Grid className={classes.forgotpassword}>
               <ReactLink to="#">
                 Forgot password?
               </ReactLink>
-            </Grid>
+            </Grid> */}
             <Grid item className={classes.signupnow}>
               <ReactLink to="/authentication/signup" variant="body2">
                 New to Proudtale? Sign up Now
